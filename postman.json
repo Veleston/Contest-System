@@ -1,0 +1,339 @@
+{
+    "info": {
+        "_postman_id": "contest-api",
+        "name": "Contest API",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Authentication",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\"name\":\"User Name\",\"email\":\"user@example.com\",\"password\":\"password123\",\"role\":\"SIGNED_IN\"}"
+                },
+                "url": {
+                    "raw": "http://localhost:8000/register",
+                    "host": [
+                        "localhost:8000"
+                    ],
+                    "path": [
+                        "register"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Login",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\"email\":\"user@example.com\",\"password\":\"password123\"}"
+                },
+                "url": {
+                    "raw": "http://localhost:8000/login",
+                    "host": [
+                        "localhost:8000"
+                    ],
+                    "path": [
+                        "login"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Create Contest",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{token}}"
+                    },
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\"name\":\"Test Contest\",\"description\":\"Test Description\",\"access_level\":\"NORMAL\",\"start_time\":\"2025-03-24 00:00:00\",\"end_time\":\"2025-03-25 00:00:00\",\"prize_amount\":100}"
+                },
+                "url": {
+                    "raw": "http://localhost:8000/contests",
+                    "host": [
+                        "localhost:8000"
+                    ],
+                    "path": [
+                        "contests"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Get Contests",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{token}}"
+                    }
+                ],
+                "url": {
+                    "raw": "http://localhost:8000/contests",
+                    "host": [
+                        "localhost:8000"
+                    ],
+                    "path": [
+                        "contests"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Get Contest",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{token}}"
+                    }
+                ],
+                "url": {
+                    "raw": "http://localhost:8000/contests/1",
+                    "host": [
+                        "localhost:8000"
+                    ],
+                    "path": [
+                        "contests",
+                        "1"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Update Contest",
+            "request": {
+                "method": "PUT",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{token}}"
+                    },
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\"name\":\"Updated Contest\",\"description\":\"Updated Description\",\"access_level\":\"NORMAL\",\"start_time\":\"2025-03-24 00:00:00\",\"end_time\":\"2025-03-25 00:00:00\",\"prize_amount\":100}"
+                },
+                "url": {
+                    "raw": "http://localhost:8000/contests/1",
+                    "host": [
+                        "localhost:8000"
+                    ],
+                    "path": [
+                        "contests",
+                        "1"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Delete Contest",
+            "request": {
+                "method": "DELETE",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{token}}"
+                    }
+                ],
+                "url": {
+                    "raw": "http://localhost:8000/contests/1",
+                    "host": [
+                        "localhost:8000"
+                    ],
+                    "path": [
+                        "contests",
+                        "1"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Participate in Contest",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{token}}"
+                    },
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\"answers\":[{\"question_id\":1,\"answer_id\":1},{\"question_id\":2,\"answer_id\":3}]}"
+                },
+                "url": {
+                    "raw": "http://localhost:8000/contests/1/participate",
+                    "host": [
+                        "localhost:8000"
+                    ],
+                    "path": [
+                        "contests",
+                        "1",
+                        "participate"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Submit Participation",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{token}}"
+                    },
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\"answers\":[{\"question_id\":1,\"answer_id\":1},{\"question_id\":2,\"answer_id\":3}]}"
+                },
+                "url": {
+                    "raw": "http://localhost:8000/participations/1/submit",
+                    "host": [
+                        "localhost:8000"
+                    ],
+                    "path": [
+                        "participations",
+                        "1",
+                        "submit"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Get Participation",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{token}}"
+                    }
+                ],
+                "url": {
+                    "raw": "http://localhost:8000/participations/1",
+                    "host": [
+                        "localhost:8000"
+                    ],
+                    "path": [
+                        "participations",
+                        "1"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Get Leaderboard",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{token}}"
+                    }
+                ],
+                "url": {
+                    "raw": "http://localhost:8000/contests/1/leaderboard",
+                    "host": [
+                        "localhost:8000"
+                    ],
+                    "path": [
+                        "contests",
+                        "1",
+                        "leaderboard"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Get Prizes",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{token}}"
+                    }
+                ],
+                "url": {
+                    "raw": "http://localhost:8000/prizes",
+                    "host": [
+                        "localhost:8000"
+                    ],
+                    "path": [
+                        "prizes"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Get Prize",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{token}}"
+                    }
+                ],
+                "url": {
+                    "raw": "http://localhost:8000/prizes/1",
+                    "host": [
+                        "localhost:8000"
+                    ],
+                    "path": [
+                        "prizes",
+                        "1"
+                    ]
+                }
+            }
+        }
+    ],
+    "variable": [
+        {
+            "id": "token",
+            "value": "your_token_here"
+        }
+    ]
+}
